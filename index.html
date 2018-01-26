@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Tp</title>
+		<meta charset="UTF-8"/>
+
+		<script src="main.js"></script>
+		<script src="util.js"></script>
+		<script src="dda.js"></script>
+		<script src="bresenham.js"></script>
+		<script src="bresenhamCircle.js"></script>
+		<script src="transform.js"></script>
+	</head>
+
+	<body style="margin:5;" onload="main();">
+		<div style="margin:0 auto;  text-align:center;">
+			<div width="1000" height="400" style="margin:auto; display:block;">
+				Left click: draw <br/>
+				Right click: set transform center <br/>
+				<canvas id="myCanvas" width="1000" height="400" style="border:1px solid #d3d3d3; margin:auto; display: block; cursor: crosshair;">
+				</canvas>
+			</div>
+
+			Draw:
+			<div width="500" height="400" style="margin:0 auto; display:block; text-align:center; padding:5px;">
+				<button type="button" onclick="currMode=new DDA(); draw();" style="width: 200px">DDA</button>
+				<button type="button" onclick="currMode=new Bresenham(); draw();" style="width: 200px">Bresenham</button>
+				<button type="button" onclick="currMode=new BresenhamCircle(); draw();" style="width: 200px">BresenhamCircle</button>
+			</div>
+			<br/>
+			Transform:
+			<div width="500" height="400" style="margin:0 auto; display:block; text-align:center; padding:5px;">
+				<div style="display:inline-block; text-align:left; float:center;">
+					<button type="button" style="width: 200px" id="translate">Translate</button>
+						 x: <input type="text" id="transX">
+						 y: <input type="text" id="transY"> <br/><br/>
+
+					<button type="button" onclick="Rotate(currMode, 500, 200, 16); draw();" style="width: 200px" id="rotate">Rotate</button>
+						θ: <input type="text" id="rotAngle"><br/><br/>
+
+					<button type="button" onclick="Scale(currMode, 1, 2); draw();" style="width: 200px" id="scale">Scale</button>
+						x: <input type="text" value="1" id="scaleX">
+						y: <input type="text" value="1" id="scaleY"><br/><br/>
+
+					<button type="button" onclick="Reflect(currMode, 500, 200, 'x'); draw();" style="width: 200px" id="reflect">Reflect</button>
+						<input type="checkbox" id="reflectX"> x
+						<input type="checkbox" id="reflectY"> y
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
